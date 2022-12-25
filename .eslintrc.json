@@ -7,8 +7,8 @@
     "extraFileExtensions": [".vue"]
   },
   "extends": [
-    "airbnb",
-    "airbnb-typescript"
+    "airbnb-base",
+    "airbnb-typescript/base"
   ],
   "plugins": [
     "vue",

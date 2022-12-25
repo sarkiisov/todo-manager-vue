@@ -11,7 +11,7 @@
   },
   "lint-staged": {
     "*.{ts,vue}": [
-      "eslint --cache"
+      "eslint \"src/**/*.{ts,vue}\""
     ]
   },
   "dependencies": {

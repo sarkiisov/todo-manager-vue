@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ipcRenderer } from 'electron';
+import { ref } from 'vue';
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const handleClick = () => {
+  ipcRenderer.send('hello', 'data from Vue app');
+};
+
+const count = ref(0);
 </script>
 
 <template>
+  <button @click="handleClick">Hello</button>
   <h1>{{ msg }}</h1>
 
   <div class="card">
@@ -19,8 +25,9 @@ const count = ref(0)
 
   <p>
     Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
+    <a href="https://vuejs.org/guide/quick-start.html#local"
+       target="_blank"
+    >create-vue</a
     >, the official Vue + Vite starter
   </p>
   <p>

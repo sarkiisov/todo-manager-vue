@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import { ipcRenderer } from 'electron';
 import { ref } from 'vue';
 
 defineProps<{ msg: string }>();
-
-const handleClick = () => {
-  ipcRenderer.send('hello', 'data from Vue app');
-};
 
 const count = ref(0);
 </script>
 
 <template>
-  <button @click="handleClick">Hello</button>
   <h1>{{ msg }}</h1>
 
   <div class="card">

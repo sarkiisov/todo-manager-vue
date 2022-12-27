@@ -1,15 +1,15 @@
-import { defineConfig, loadEnv } from 'vite'
-import renderer from 'vite-plugin-electron-renderer';
+import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'url';
+import electron from 'vite-plugin-electron';
 import vue from '@vitejs/plugin-vue';
+import renderer from 'vite-plugin-electron-renderer';
+import { rmSync } from 'node:fs';
+import pkg from './package.json';
 
-const loadEnvVariables = (mode: string): void => {
-  Object.assign(process.env, loadEnv(mode, process.cwd()));
-}
+rmSync('dist-electron', { recursive: true, force: true });
 
 // https://vitejs.dev/config/
 export default defineConfig((init) => {
-  loadEnvVariables(init.mode);
   return {
     base: '',
     resolve: {
@@ -19,6 +19,19 @@ export default defineConfig((init) => {
     },
     plugins: [
       vue(),
+      electron([
+        {
+          entry: 'electron/main/index.ts',
+          vite: {
+            build: {
+              outDir: 'dist-electron/main',
+              rollupOptions: {
+                external: Object.keys("dependencies" in pkg ? pkg.dependencies : {}),
+              },
+            },
+          },
+        },
+      ]),
       renderer({
         nodeIntegration: true
       })

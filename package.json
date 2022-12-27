@@ -5,7 +5,10 @@
   "main": "./dist/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build && tsc -p ./electron/tsconfig.json",
+    "start": "cross-env PROD=1 && electron .",
+    "build": "npm run build:renderer && npm run build:electron",
+    "build:renderer": "vite build",
+    "build:electron": "tsc -p ./electron/tsconfig.json",
     "preview": "vite preview",
     "prepare": "husky install"
   },
@@ -22,6 +25,8 @@
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "@vitejs/plugin-vue": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
     "electron": "^22.0.0",
     "eslint": "^8.30.0",
     "eslint-config-airbnb-base": "^15.0.0",

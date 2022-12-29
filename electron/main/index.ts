@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 
 import { release } from 'node:os';
 import { join } from 'node:path';
@@ -19,12 +19,14 @@ if (!app.requestSingleInstanceLock()) {
 }
 
 let win: BrowserWindow | null = null;
-
 const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, 'index.html');
 
 async function createWindow() {
   win = new BrowserWindow({
+    width: 800,
+    height: 580,
+    frame: false,
     icon: join(process.env.PUBLIC, 'favicon.ico'),
     webPreferences: {
       nodeIntegration: true,
@@ -54,4 +56,12 @@ app.on('activate', () => {
   } else {
     createWindow();
   }
+});
+
+ipcMain.on('minimizeWindow', () => {
+  win.minimize();
+});
+
+ipcMain.on('closeWindow', () => {
+  win.close();
 });

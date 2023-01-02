@@ -4,8 +4,8 @@
        :height="props.height"
        :fill="props.fill"
        :stroke="props.stroke"
+       :stroke-width="props.strokeWidth"
        viewBox="0 0 24 24"
-       stroke-width="2"
        stroke-linecap="round"
        stroke-linejoin="round">
     <slot />
@@ -17,6 +17,7 @@ const props = defineProps({
   width: { type: Number, default: 24 },
   height: { type: Number, default: 24 },
   fill: { type: String, default: 'none' },
-  stroke: { type: String, default: 'currentColor' }
+  stroke: { type: String, default: 'currentColor' },
+  strokeWidth: { type: Number, default: 2 }
 });
 </script>

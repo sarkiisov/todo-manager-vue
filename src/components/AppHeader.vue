@@ -1,12 +1,15 @@
 <template>
   <div class="header">
     <h2 class="header__text">
-      <slot />
+      {{ route.name }}
     </h2>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <style>

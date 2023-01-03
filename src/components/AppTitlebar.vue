@@ -2,10 +2,10 @@
   <div class="titlebar">
     <div class="titlebar__controls">
       <button class="titlebar__button" @click="minimizeWindow">
-        <MinusIcons width="16" height="16" />
+        <MinusIcons :width="16" :height="16" />
       </button>
       <button class="titlebar__button" @click="closeWindow">
-        <XIcon width="16" height="16" />
+        <XIcon :width="16" :height="16" />
       </button>
     </div>
   </div>

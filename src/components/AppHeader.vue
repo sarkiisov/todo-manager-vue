@@ -12,7 +12,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 </script>
 
-<style>
+<style scoped>
 .header {
   height: 100px;
   display: flex;
@@ -21,6 +21,7 @@ const route = useRoute();
 }
 .header__text {
   overflow: hidden;
+  text-transform: capitalize;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: 500;

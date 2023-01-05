@@ -12,5 +12,6 @@ export const useThemeStore = defineStore('theme', {
     setTheme(theme: string) {
       this.theme = theme;
     }
-  }
+  },
+  persist: true,
 });

@@ -1,29 +1,41 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="vue-app" :data-theme="themeStore.theme">
+    <AppTitlebar />
+    <div class="layout">
+      <AppSidebar />
+      <div class="content-wrapper">
+        <router-view name="header" />
+        <router-view name="content"/>
+      </div>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<script setup lang="ts">
+import AppTitlebar from '@/components/AppTitlebar.vue';
+import AppSidebar from '@/components/AppSidebar.vue';
+import { useThemeStore } from './store/theme';
+
+const themeStore = useThemeStore();
+</script>
+
+<style>
+.vue-app {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 580px;
+  background: var(--c-bg);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.layout {
+  display: grid;
+  grid-template-columns: 270px auto;
+  grid-template-rows: 550px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0px 50px;
 }
 </style>

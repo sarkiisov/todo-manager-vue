@@ -5,6 +5,7 @@ import CollectionHeader from '@/components/CollectionHeader.vue';
 import Overview from '@/views/Overview.vue';
 import Important from '@/views/Important.vue';
 import Collection from '@/views/Collection.vue';
+import SettingsVue from '@/views/Settings.vue';
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -41,7 +42,15 @@ const router = createRouter({
           }
         }
       ]
-    }
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      components: {
+        header: AppHeader,
+        content: SettingsVue,
+      }
+    },
   ]
 });
 

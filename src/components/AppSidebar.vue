@@ -48,7 +48,7 @@ const createCollection = () => {
 };
 
 const deleteCollection = (collectionId: Collection['id']) => {
-  if (route.params.id === collectionId) router.push('/overview');
+  if (route.params.id === collectionId) router.push('/collection');
   collectionsStore.deleteCollection(collectionId);
 };
 

@@ -26,8 +26,8 @@ const todosStore = useTodosStore();
 
 const createTodo = () => {
   if (todoBody.value.length === 0) return;
-  todoBody.value = '';
   todosStore.createTodo(props.collectionId, todoBody.value);
+  todoBody.value = '';
 };
 </script>
 

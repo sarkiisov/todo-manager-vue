@@ -1,9 +1,13 @@
 <template>
   <div class="todo-list">
     <TodoItem
+      v-if="props.todos.length > 0"
       v-for="todo in props.todos"
       :todo="todo"
     />
+    <div v-else class="todo-empty">
+      <span class="todo-empty__body">Collection is empty</span>
+    </div>
   </div>
 </template>
 
@@ -26,5 +30,15 @@ const props = defineProps({
 }
 .todo-list::-webkit-scrollbar {
   display: none;
+}
+.todo-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+.todo-empty__body {
+  user-select: none;
+  color: var(--c-text);
 }
 </style>

@@ -82,7 +82,8 @@ const deleteTodo = () => {
   background: var(--c-success);
   border: 1px solid currentColor;
 }
-.todo-item_completed .todo-item__body {
+.todo-item_completed
+.todo-item__body {
   text-decoration: line-through;
 }
 .todo-item__important-toggle {

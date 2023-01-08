@@ -29,7 +29,7 @@ const themeStore = useThemeStore();
 }
 .layout {
   display: grid;
-  grid-template-columns: 270px auto;
+  grid-template-columns: 270px 530px;
   grid-template-rows: 550px;
 }
 .content-wrapper {

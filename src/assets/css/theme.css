@@ -1,6 +1,7 @@
 :root {
   --c-white: #FFFFFF;
   --c-black: #000000;
+  --c-bronze: #F1B987;
   --c-yellow: #DCA844;
   --c-grey-100: #F5F5F5;
   --c-grey-200: #DCDCDC;
@@ -10,6 +11,10 @@
   --c-grey-600: #181818;
   --c-green-100: #7fcd96;
   --c-green-200: #6bb981;
+  --c-indigo-100: #374857;
+  --c-indigo-200: #1F3647;
+  --c-indigo-300: #192938;
+  --c-indigo-400: #121E29;
 
   --ms100: 100ms;
   --ms200: 200ms;
@@ -36,6 +41,17 @@
   --c-bg-dark: var(--c-grey-600);
   --c-text: var(--c-grey-200);
   --c-border: var(--c-grey-300);
+  --c-success: var(--c-green-200);
+  --c-warning: var(--c-yellow);
+  --shadow: var(--shadow-dark);
+}
+
+[data-theme='indigo'] {
+  --c-bg: var(--c-indigo-300);
+  --c-bg-mute: var(--c-indigo-200);
+  --c-bg-dark: var(--c-indigo-400);
+  --c-text: var(--c-bronze);
+  --c-border: var(--c-indigo-100);
   --c-success: var(--c-green-200);
   --c-warning: var(--c-yellow);
   --shadow: var(--shadow-dark);

@@ -42,6 +42,10 @@ const props = defineProps({
 .sidebar__button_active {
   background-color: var(--c-bg-mute);
 }
+.sidebar__svg-icon,
+.sidebar__emoji-icon {
+  flex-shrink: 0;
+}
 .sidebar__body {
   padding-left: 12px;
   white-space: nowrap;

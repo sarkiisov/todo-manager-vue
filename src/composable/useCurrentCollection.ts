@@ -6,9 +6,11 @@ export const useCurrentCollection = () => {
 
   const title = computed(() => collectionsStore.getCurrentCollection.title);
   const emojiIcon = computed(() => collectionsStore.getCurrentCollection.emojiIcon);
-  const rawTitle = toRaw(collectionsStore.getCurrentCollection.title);
 
-  const setCollectionTitle = (newTitle: string) => {
+  const rawTitle = toRaw(collectionsStore.getCurrentCollection.title);
+  const rawEmojiIcon = toRaw(collectionsStore.getCurrentCollection.emojiIcon);
+
+  const setTitle = (newTitle: string) => {
     collectionsStore.getCurrentCollection.title = newTitle;
   };
 
@@ -16,7 +18,7 @@ export const useCurrentCollection = () => {
     collectionsStore.getCurrentCollection.emojiIcon = undefined;
   };
 
-  const setEmojiIcon = (newEmojiIcon: string) => {
+  const setEmojiIcon = (newEmojiIcon: string | undefined) => {
     collectionsStore.getCurrentCollection.emojiIcon = newEmojiIcon;
   };
 
@@ -24,7 +26,8 @@ export const useCurrentCollection = () => {
     title,
     emojiIcon,
     rawTitle,
-    setCollectionTitle,
+    rawEmojiIcon,
+    setTitle,
     resetEmojiIcon,
     setEmojiIcon
   };

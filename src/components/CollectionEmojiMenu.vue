@@ -1,12 +1,12 @@
 <template>
   <div class="collection-icon-menu">
-    <div class="collection-icon-menu__item" @click="resetIcon">
+    <div class="collection-icon-menu__item" @click="resetEmojiIcon">
       <XIcon :width="16" :height="16"/>
     </div>
     <div
       v-for="emojiIcon in emojiIcons"
       class="collection-icon-menu__item"
-      @click="setIcon(emojiIcon)"
+      @click="updateEmojiIcon(emojiIcon)"
     >
       {{ emojiIcon }}
     </div>
@@ -14,18 +14,17 @@
 </template>
 
 <script setup lang="ts">
-import { emojiIcons } from '@/appContants/emoji';
-import { useCollectionsStore } from '@/store/collections';
-import XIcon from './icons/XIcon.vue';
+import { emojiIcons } from '@/appConstants/emoji';
+import XIcon from '@/components/icons/XIcon.vue';
+import { useCurrentCollection } from '@/composable/useCurrentCollection';
 
-const collectionsStore = useCollectionsStore();
+const emit = defineEmits(['updateEmojiIcon']);
 
-const resetIcon = () => {
-  collectionsStore.getCurrentCollection.emojiIcon = undefined;
-};
+const { resetEmojiIcon, setEmojiIcon } = useCurrentCollection();
 
-const setIcon = (emojiIcon: string) => {
-  collectionsStore.getCurrentCollection.emojiIcon = emojiIcon;
+const updateEmojiIcon = (emojiIcon: string) => {
+  setEmojiIcon(emojiIcon);
+  emit('updateEmojiIcon');
 };
 </script>
 

@@ -52,7 +52,7 @@ const createTodo = () => {
   outline: none;
 }
 .todo-form__input::placeholder {
-  color: var(--c-text);
+  color: var(--c-border);
 }
 .todo-form__input::selection {
   background: var(--c-bg-dark);

@@ -14,6 +14,7 @@ const route = useRoute();
 
 <style scoped>
 .header {
+  flex-shrink: 0;
   height: 100px;
   display: flex;
   align-items: center;

@@ -1,8 +1,8 @@
 <template>
   <div class="sidebar">
     <div class="sidebar__header">
-      <SidebarButton :svg-icon="HomeIcon" :isActive="isActiveRoute('overview')" @click="router.push('/collection')">Overview</SidebarButton>
-      <SidebarButton :svg-icon="StarIcon" :isActive="isActiveRoute('important')" @click="router.push('/collection/important')">Important</SidebarButton>
+      <SidebarButton :svg-icon="HomeIcon" :isActive="isActiveRoute('overview')" @click="navigateRoute('/collection')">Overview</SidebarButton>
+      <SidebarButton :svg-icon="StarIcon" :isActive="isActiveRoute('important')" @click="navigateRoute('/collection/important')">Important</SidebarButton>
       <SidebarButton :svg-icon="PlusIcon" @click="createCollection">New collection</SidebarButton>
     </div>
     <SidebarDivider />
@@ -20,8 +20,8 @@
     </div>
     <SidebarDivider />
     <div class="sidebar__footer">
-      <SidebarButton :svg-icon="SettingsIcon" :isActive="isActiveRoute('settings')" @click="router.push('/settings')">Settings</SidebarButton>
-      <SidebarButton :svg-icon="SyncIcon" :isActive="isActiveRoute('sync')" @click="router.push('/sync')">Sync</SidebarButton>
+      <SidebarButton :svg-icon="SettingsIcon" :isActive="isActiveRoute('settings')" @click="navigateRoute('/settings')">Settings</SidebarButton>
+      <SidebarButton :svg-icon="SyncIcon" :isActive="isActiveRoute('sync')" @click="navigateRoute('/sync')">Sync</SidebarButton>
     </div>
   </div>
 </template>
@@ -53,6 +53,10 @@ const deleteCollection = (collectionId: Collection['id']) => {
 };
 
 const isActiveRoute = (routeName: string) => route.name === routeName;
+
+const navigateRoute = (url: string) => {
+  router.push(url);
+};
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
   <div class="select" :class="{ 'select_toggled': showDropdown }" ref="selectElement">
     <button class="select__option" @click="toggleDropdown">
-      <span class="select_text">{{ props.value }}</span>
+      <span class="select__text">{{ props.value }}</span>
       <ChevronDownIcon class="select__chevron-icon" :width="16" :height="16"/>
     </button>
     <div class="select__dropdown" v-if="showDropdown">
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { PropType, ref } from 'vue';
 import { useOutsideClick } from '@/composable/useOutsideClick';
-import ChevronDownIcon from './icons/ChevronDownIcon.vue';
+import ChevronDownIcon from '@/components/icons/ChevronDownIcon.vue';
 
 const props = defineProps({
   value: { type: String, required: true },
@@ -28,9 +28,7 @@ const showDropdown = ref(false);
 const selectElement = ref();
 
 useOutsideClick(selectElement, () => {
-  if (showDropdown.value) {
-    showDropdown.value = false;
-  }
+  showDropdown.value = false;
 });
 
 const toggleDropdown = () => {
@@ -95,8 +93,8 @@ const setSelectedValue = (value: string) => {
 .select__dropdown {
   position: absolute;
   overflow-y: overlay;
-  min-width: 100%;
-  max-height: 120px;
+  width: 100%;
+  max-height: calc(120px + 2px);
   border: 1px solid var(--c-border);
   border-radius: 4px;
   background: var(--c-bg);

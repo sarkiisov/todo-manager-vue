@@ -5,7 +5,8 @@ import CollectionHeader from '@/components/CollectionHeader.vue';
 import Overview from '@/views/Overview.vue';
 import Important from '@/views/Important.vue';
 import Collection from '@/views/Collection.vue';
-import SettingsVue from '@/views/Settings.vue';
+import Settings from '@/views/Settings.vue';
+import Sync from '@/views/Sync.vue';
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -48,9 +49,17 @@ const router = createRouter({
       name: 'settings',
       components: {
         header: AppHeader,
-        content: SettingsVue,
+        content: Settings,
       }
     },
+    {
+      path: '/sync',
+      name: 'sync',
+      components: {
+        header: AppHeader,
+        content: Sync
+      }
+    }
   ]
 });
 

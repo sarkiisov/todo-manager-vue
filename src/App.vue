@@ -14,15 +14,13 @@
 <script setup lang="ts">
 import AppTitlebar from '@/components/AppTitlebar.vue';
 import AppSidebar from '@/components/AppSidebar.vue';
-import { useThemeStore } from './store/theme';
+import { useThemeStore } from '@/store/theme';
 
 const themeStore = useThemeStore();
 </script>
 
 <style>
 .vue-app {
-  display: flex;
-  flex-direction: column;
   width: 800px;
   height: 580px;
   background: var(--c-bg);

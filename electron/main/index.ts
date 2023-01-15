@@ -1,4 +1,6 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import {
+  app, BrowserWindow, clipboard, ipcMain
+} from 'electron';
 
 import { release } from 'node:os';
 import { join } from 'node:path';
@@ -36,7 +38,6 @@ async function createWindow() {
 
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(url);
-    win.webContents.openDevTools();
   } else {
     win.loadFile(indexHtml);
   }
@@ -59,9 +60,13 @@ app.on('activate', () => {
 });
 
 ipcMain.on('minimizeWindow', () => {
-  win.minimize();
+  win!.minimize();
 });
 
 ipcMain.on('closeWindow', () => {
-  win.close();
+  win!.close();
+});
+
+ipcMain.on('copy', (_, copyValue) => {
+  clipboard.writeText(copyValue);
 });

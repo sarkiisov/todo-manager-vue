@@ -20,6 +20,15 @@ A desktop application to manage and track your everyday goals
 - Punycode
 
 ## Showcase
-![Theme switching](./docs/gif/theme.gif)  
-![Collection customization](./docs/gif/collection.gif)  
-![Sync process](./docs/gif/sync.gif)  
+<details>
+  <summary>Theme switching</summary>
+  <img src="./docs/gif/theme.gif">
+</details>
+<details>
+  <summary>Collection customization</summary>
+  <img src="./docs/gif/collection.gif">
+</details>
+<details>
+  <summary>WebRTC synchronization</summary>
+  <img src="./docs/gif/sync.gif">
+</details>

@@ -1,7 +1,6 @@
 {
   "appId": "com.todo-manager.app",
   "asar": true,
-  "icon": "public/favicon.ico",
   "directories": {
     "output": "release-builds/${version}"
   },
@@ -25,5 +24,8 @@
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": false
+  },
+  "directories": {
+    "buildResources": "./public"
   }
 }

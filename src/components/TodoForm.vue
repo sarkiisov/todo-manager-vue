@@ -1,12 +1,13 @@
 <template>
   <div class="todo-form">
     <PlusIcon class="todo-form__icon" :width="24" :height="24"/>
-    <input class="todo-form__input"
-           placeholder="Add new task"
-           spellcheck="false"
-           v-model="todoBody"
-           @keyup.enter="createTodo"
-    />
+    <input
+      class="todo-form__input"
+      placeholder="Add new task"
+      spellcheck="false"
+      v-model="todoBody"
+      @keyup.enter="createTodo"
+    >
   </div>
 </template>
 

@@ -36,7 +36,7 @@ const {
 const { syncStepBarItems } = useSycnStepBar(syncStatus);
 </script>
 
-<style>
+<style scoped>
 .sync-item {
   display: flex;
   flex-direction: column;

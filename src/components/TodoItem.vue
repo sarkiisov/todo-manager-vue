@@ -66,8 +66,8 @@ const deleteTodo = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--c-border);
   border-radius: 50%;
   outline: none;

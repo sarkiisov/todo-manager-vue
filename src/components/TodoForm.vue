@@ -12,22 +12,19 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, ref } from 'vue';
+import { ref } from 'vue';
 import PlusIcon from '@/components/icons/PlusIcon.vue';
-import { Collection } from '@/types/Collection';
 import { useTodosStore } from '@/store/todos';
+import { useCollectionsStore } from '@/store/collections';
 
 const todoBody = ref('');
 
-const props = defineProps({
-  collectionId: { type: String as PropType<Collection['id']>, required: true }
-});
-
 const todosStore = useTodosStore();
+const collectionsStore = useCollectionsStore();
 
 const createTodo = () => {
   if (todoBody.value.length === 0) return;
-  todosStore.createTodo(props.collectionId, todoBody.value);
+  todosStore.createTodo(collectionsStore.currentCollectionId, todoBody.value);
   todoBody.value = '';
 };
 </script>

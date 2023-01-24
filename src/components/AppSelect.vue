@@ -92,6 +92,7 @@ const setSelectedValue = (value: string) => {
 }
 .select__dropdown {
   position: absolute;
+  top: calc(100% + 4px);
   overflow-y: overlay;
   width: 100%;
   max-height: calc(120px + 2px);

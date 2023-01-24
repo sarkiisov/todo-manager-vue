@@ -31,7 +31,7 @@ const updateEmojiIcon = (emojiIcon: string) => {
 <style scoped>
 .collection-icon-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   box-sizing: content-box;
   display: flex;
   flex-wrap: wrap;

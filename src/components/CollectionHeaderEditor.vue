@@ -1,5 +1,5 @@
 <template>
-  <div class="collection-header-editor">
+  <div class="collection-header-editor" ref="collectionEditorElement">
     <div class="collection-header-editor__icon" @click="toggleEmojiMenu">
       <span v-if="emojiIcon">{{ emojiIcon }}</span>
       <SmileIcon v-else :width="28" :height="28"/>
@@ -9,16 +9,23 @@
       spellcheck="false"
       v-model="title"
       v-focus
+      @keyup.enter="updateTitle"
     >
     <CollectionEmojiMenu v-if="showEmojiMenu" @update-emoji-icon="closeEmojiMenu"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, Directive, onBeforeUnmount } from 'vue';
+import {
+  ref, Directive
+} from 'vue';
+import { onBeforeRouteUpdate } from 'vue-router';
 import SmileIcon from '@/components/icons/SmileIcon.vue';
 import CollectionEmojiMenu from '@/components/CollectionEmojiMenu.vue';
 import { useCurrentCollection } from '@/composable/useCurrentCollection';
+import { useOutsideClick } from '@/composable/useOutsideClick';
+
+const emit = defineEmits(['closeEditor']);
 
 const {
   rawTitle, emojiIcon, setTitle
@@ -26,6 +33,7 @@ const {
 
 const title = ref(rawTitle);
 const showEmojiMenu = ref(false);
+const collectionEditorElement = ref();
 
 const toggleEmojiMenu = () => {
   showEmojiMenu.value = !showEmojiMenu.value;
@@ -38,15 +46,25 @@ const closeEmojiMenu = () => {
 const updateTitle = () => {
   if (title.value === '') return;
   setTitle(title.value);
+  emit('closeEditor');
 };
+
+useOutsideClick(collectionEditorElement, () => {
+  updateTitle();
+}, true);
+
+useOutsideClick(collectionEditorElement, () => {
+  if (!showEmojiMenu.value) return;
+  closeEmojiMenu();
+});
+
+onBeforeRouteUpdate(() => {
+  emit('closeEditor');
+});
 
 const vFocus: Directive = {
   mounted: (element) => element.focus()
 };
-
-onBeforeUnmount(() => {
-  updateTitle();
-});
 </script>
 
 <style scoped>

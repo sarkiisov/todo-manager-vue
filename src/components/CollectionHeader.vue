@@ -1,17 +1,15 @@
 <template>
-  <div class="collection-header" ref="headerElement">
+  <div class="collection-header">
     <CollectionHeaderDisplay v-if="!showEditor" @click="openEditor"/>
-    <CollectionHeaderEditor v-else/>
+    <CollectionHeaderEditor v-else @close-editor="closeEditor"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useOutsideClick } from '@/composable/useOutsideClick';
-import CollectionHeaderDisplay from './CollectionHeaderDisplay.vue';
-import CollectionHeaderEditor from './CollectionHeaderEditor.vue';
+import CollectionHeaderDisplay from '@/components/CollectionHeaderDisplay.vue';
+import CollectionHeaderEditor from '@/components/CollectionHeaderEditor.vue';
 
-const headerElement = ref();
 const showEditor = ref(false);
 
 const openEditor = () => {
@@ -21,12 +19,6 @@ const openEditor = () => {
 const closeEditor = () => {
   showEditor.value = false;
 };
-
-useOutsideClick(headerElement, () => {
-  if (showEditor.value) {
-    closeEditor();
-  }
-});
 </script>
 
 <style scoped>

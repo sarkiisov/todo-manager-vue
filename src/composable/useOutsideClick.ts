@@ -2,7 +2,7 @@
 
 import { onBeforeUnmount, onMounted, Ref } from 'vue';
 
-export const useOutsideClick = (target: Ref, callback: () => void) => {
+export const useOutsideClick = (target: Ref, callback: () => void, doubleClick?: boolean) => {
   if (!target) return;
 
   const listner = (e: Event) => {
@@ -12,12 +12,14 @@ export const useOutsideClick = (target: Ref, callback: () => void) => {
     callback();
   };
 
+  const eventName = doubleClick ? 'dblclick' : 'click';
+
   onMounted(() => {
-    window.addEventListener('click', listner);
+    window.addEventListener(eventName, listner);
   });
 
   onBeforeUnmount(() => {
-    window.removeEventListener('click', listner);
+    window.removeEventListener(eventName, listner);
   });
 
   return {

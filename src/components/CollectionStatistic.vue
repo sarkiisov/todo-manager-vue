@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useTodosStore } from '@/store/todos';
-import ProgressPie from './ProgressPie.vue';
+import ProgressPie from './CollectionProgressPie.vue';
 
 const todoStore = useTodosStore();
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="progress-pie" :style="`--percentage: ${props.percentage}%`"></div>
+  <div class="collection-progress-pie" :style="`--percentage: ${props.percentage}%`"></div>
 </template>
 
 <script setup lang="ts">
@@ -14,11 +14,12 @@ const props = defineProps({
   inherits: false;
   syntax: "<percentage>";
 }
-.progress-pie {
+.collection-progress-pie {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background: conic-gradient(var(--c-success) var(--percentage), transparent 0);
   border: 1px solid var(--c-border);
+  transition: --percentage var(--ms200);
 }
 </style>

@@ -11,7 +11,9 @@
       v-focus
       @keyup.enter="updateTitle"
     >
-    <CollectionEmojiMenu v-if="showEmojiMenu" @update-emoji-icon="closeEmojiMenu"/>
+    <Transition name="scale">
+      <CollectionEmojiMenu v-if="showEmojiMenu" @update-emoji-icon="closeEmojiMenu"/>
+    </Transition>
   </div>
 </template>
 

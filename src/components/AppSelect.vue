@@ -4,11 +4,13 @@
       <span class="select__text">{{ props.value }}</span>
       <ChevronDownIcon class="select__chevron-icon" :width="16" :height="16"/>
     </button>
-    <div class="select__dropdown" v-if="showDropdown">
-      <ul class="select__list">
-        <li class="select__list-item" v-for="option in props.options" @click="setSelectedValue(option)">{{ option }}</li>
-      </ul>
-    </div>
+    <Transition name="scale">
+      <div class="select__dropdown" v-if="showDropdown">
+        <ul class="select__list">
+          <li class="select__list-item" v-for="option in props.options" @click="setSelectedValue(option)">{{ option }}</li>
+        </ul>
+      </div>
+    </Transition>
   </div>
 </template>
 
